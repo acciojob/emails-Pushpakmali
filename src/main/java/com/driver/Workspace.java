@@ -32,7 +32,7 @@ public class Workspace extends Gmail{
         for(int i=0;i<calendar.size();i++){
             endTimes.add(new Pair.of(calendar.get(i).getEndTime(), i));
         }
-        Collection.sort(endTimes);
+        Collections.sort(endTimes);
 
         LocalTime timeLimit = endTimes.get(0).getLeft();
         if(!endTimes.isEmpty()){

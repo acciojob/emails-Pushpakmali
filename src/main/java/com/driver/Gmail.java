@@ -32,7 +32,7 @@ public class Gmail extends Email {
             Trash.add(oldestMail);
         }
 
-        Triple<Date,String,String> currMail = Triple.of(date,sender,message);
+        Triple<Date,String,String> currMail =new Triple.of(date,sender,message);
         Inbox.add(currMail);
     }
 
@@ -50,7 +50,7 @@ public class Gmail extends Email {
 
         if(index != -1){
             Trash.add(Inbox.get(index));
-            Inbox.remove(Index);
+            Inbox.remove(index);
         }
     }
 
