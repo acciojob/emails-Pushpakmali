@@ -32,7 +32,7 @@ public class Gmail extends Email {
             Trash.add(oldestMail);
         }
 
-        Triple<Date,String,String> currMail =new Triple.of(date, sender, message);
+        Triple<Date,String,String> currMail = Triple.of(date,sender,message);
         Inbox.add(currMail);
     }
 
