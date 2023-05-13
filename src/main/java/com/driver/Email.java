@@ -9,12 +9,10 @@ public class Email {
     }
 
     public String getEmailId() {
-
         return emailId;
     }
 
     public String getPassword() {
-
         return password;
     }
 
@@ -33,9 +31,9 @@ public class Email {
                 for(int i=0;i<newPassword.length();i++){
                     char ch = newPassword.charAt(i);
 
-                    if(ch >= 65 && ch <= 90)count++;
-                    else if(ch >= 97 && ch <= 122)count++;
-                    else if(ch >= 48 && ch <= 57)count++;
+                    if(ch >= 'A' && ch <= 'Z')count++;
+                    else if(ch >= 'a' && ch <= 'z')count++;
+                    else if(ch >= '0' && ch <= '9')count++;
                     else count++;
                 }
 

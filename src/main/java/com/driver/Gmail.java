@@ -79,7 +79,6 @@ public class Gmail extends Email {
         if(Inbox.size() == 0)return 0;
 
         int count=0;
-
         for(int i=0;i<Inbox.size();i++){
             if((Inbox.get(i).getLeft().compareTo(start) >= 0) && (Inbox.get(i).getLeft().compareTo(end) <= 0))count++;
         }
