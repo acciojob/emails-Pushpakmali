@@ -3,9 +3,16 @@ public class Email {
     private String emailId;
     private String password;
 
-    public Email(String emailId){
+    public Email(String emailId) {
         this.emailId = emailId;
         this.password = "Accio@123";
+    }
+
+    public Email(String emailId, String password) {
+        this.emailId = emailId;
+        if(isValid(password)){
+            this.password = password;
+        }
     }
 
     public String getEmailId() {
@@ -16,7 +23,7 @@ public class Email {
         return password;
     }
 
-    public void changePassword(String oldPassword, String newPassword){
+    public void changePassword(String oldPassword, String newPassword) {
         //Change password only if the oldPassword is equal to current password and the new password meets all of the following:
         // 1. It contains at least 8 characters
         // 2. It contains at least one uppercase letter
@@ -24,33 +31,47 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 
-        if(this.password == oldPassword){
-            if(newPassword.length() >= 8){
-                int count = 0;
+        if (oldPassword.equals(this.password)) {
+            if (isValid(newPassword)) {
+                System.out.println("Password changed Successfully!");
+                this.password = newPassword;
+            } else {
+                System.out.println("The new password is not valid!");
+            }
+        }
+    }
 
-                for(int i=0;i<newPassword.length();i++){
-                    char ch = newPassword.charAt(i);
+    public boolean isValid(String password){
+        boolean capitalLetter = false;
+        boolean smallLetter = false;
+        boolean digit = false;
+        boolean specialChar = false;
 
-                    if(ch >= 'A' && ch <= 'Z')count++;
-                    else if(ch >= 'a' && ch <= 'z')count++;
-                    else if(ch >= '0' && ch <= '9')count++;
-                    else count++;
-                }
+        if(password.length() < 8){
+            return false;
+        }
 
-                if(count >= 4){
-                    this.password = newPassword;
-                }
-                else{
-                    System.out.println("NewPassword does not fulfill all the requirements.");
-                }
+        for(int i=0;i<password.length();i++){
+            char ch = password.charAt(i);
+
+            if((ch >= 'A') && (ch <= 'Z')){
+                capitalLetter = true;
+            }
+            else if((ch >= 'a') && (ch <= 'z')){
+                smallLetter = true;
+            }
+            else if((ch >= '0') && (ch <= '9')){
+                digit = true;
             }
             else{
-                System.out.println("NewPassword is Invalid.");
+                specialChar = true;
             }
         }
-        else {
-            System.out.println("OldPassword does not match.");
+
+        if(capitalLetter && smallLetter && digit && specialChar){
+            return true;
         }
 
+        return false;
     }
 }
