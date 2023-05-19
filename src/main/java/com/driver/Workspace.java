@@ -39,7 +39,7 @@ public class Workspace extends Gmail{
         for(Meeting meet : sortCalender){
             if(meet.getStartTime().compareTo(time_limit) > 0){
                 maxMeeting.add(meet);
-                time_limit = meet.getStartTime();
+                time_limit = meet.getEndTime();
             }
         }
 
